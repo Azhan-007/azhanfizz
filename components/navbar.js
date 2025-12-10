@@ -27,9 +27,21 @@ class CustomNavbar extends HTMLElement {
                         </div>
                     </div>
                     
-                    <button id="mobileMenuButton" class="md:hidden focus:outline-none">
-                        <i data-feather="menu" class="w-6 h-6"></i>
-                    </button>
+                    <div class="flex items-center space-x-4 md:hidden">
+                        <div class="theme-toggle-container" data-tooltip="Change theme mode here">
+                            <input type="checkbox" class="togglesw" id="desktopThemeToggle">
+                            <label for="desktopThemeToggle" class="switch">
+                                <span class="indicator left"></span>
+                                <span class="indicator right"></span>
+                                <span class="button"></span>
+                            </label>
+                        </div>
+                        <button id="mobileMenuButton" class="focus:outline-none">
+                            <i data-feather="menu" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    
+                    <button id="mobileMenuButton-old" style="display: none;"></button>
                 </div>
                 
                 <div id="mobileMenu" class="mobile-menu md:hidden px-6 max-h-0 overflow-hidden transition-all duration-300">
@@ -40,18 +52,6 @@ class CustomNavbar extends HTMLElement {
                         <a href="#projects" class="nav-link relative">Projects</a>
                         <a href="#experience" class="nav-link relative">Experience</a>
                         <a href="#contact" class="nav-link relative">Contact</a>
-                        
-                        <div class="flex items-center pt-4">
-                            <span class="mr-3">Theme</span>
-                            <div class="theme-toggle-container" data-tooltip="Change theme mode here">
-                                <input type="checkbox" class="togglesw" id="mobileThemeToggle">
-                                <label for="mobileThemeToggle" class="switch">
-                                    <span class="indicator left"></span>
-                                    <span class="indicator right"></span>
-                                    <span class="button"></span>
-                                </label>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </nav>
@@ -62,7 +62,7 @@ class CustomNavbar extends HTMLElement {
         const mobileMenuButton = this.querySelector('#mobileMenuButton');
         const mobileMenu = this.querySelector('#mobileMenu');
         const themeToggle = this.querySelector('#themeToggle');
-        const mobileThemeToggle = this.querySelector('#mobileThemeToggle');
+        const desktopThemeToggle = this.querySelector('#desktopThemeToggle');
         const navLinks = this.querySelectorAll('.nav-link');
         
         // Mobile menu toggle
@@ -81,7 +81,7 @@ class CustomNavbar extends HTMLElement {
             
             // Sync both toggles
             themeToggle.checked = !darkMode;
-            mobileThemeToggle.checked = !darkMode;
+            desktopThemeToggle.checked = !darkMode;
             
             if (darkMode) {
                 document.body.className = 'bg-[#0a0a1a] text-white font-space-grotesk transition-colors duration-500';
@@ -99,7 +99,7 @@ class CustomNavbar extends HTMLElement {
         };
         
         themeToggle.addEventListener('change', toggleTheme);
-        mobileThemeToggle.addEventListener('change', toggleTheme);
+        desktopThemeToggle.addEventListener('change', toggleTheme);
         
         // Active link highlighting
         const setActiveLink = (sectionId) => {
