@@ -128,21 +128,27 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = 'Sending...';
 
             try {
-                const response = await fetch('/send-email', {
+                const response = await fetch('https://formsubmit.co/ajax/developeraz07@gmail.com', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        message: formData.message,
+                        _subject: 'New Contact Form Submission from Portfolio'
+                    })
                 });
 
                 const data = await response.json();
 
                 // Show message
                 formMessage.classList.remove('hidden');
-                if (data.success) {
+                if (response.ok) {
                     formMessage.className = 'p-4 rounded-lg bg-green-500/20 border border-green-500/30 text-green-400 mb-4';
-                    formMessage.textContent = data.message;
+                    formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
                     contactForm.reset();
                 } else {
                     formMessage.className = 'p-4 rounded-lg bg-red-500/20 border border-red-500/30 text-red-400 mb-4';
