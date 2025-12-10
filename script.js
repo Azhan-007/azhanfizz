@@ -1,3 +1,25 @@
+// Detect touch devices and add appropriate classes/events for better mobile UX
+const isTouchDevice = () => {
+    return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+};
+
+if (isTouchDevice()) {
+    document.documentElement.classList.add('touch-device');
+    
+    // Add active state feedback for interactive elements on touch
+    const interactiveElements = document.querySelectorAll('a, button, .skill-category, .testimonial-card, .about-card');
+    interactiveElements.forEach(el => {
+        el.addEventListener('touchstart', function() {
+            this.classList.add('active-touch');
+        });
+        el.addEventListener('touchend', function() {
+            setTimeout(() => this.classList.remove('active-touch'), 200);
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Welcome Modal
     const welcomeModal = document.getElementById('welcomeModal');

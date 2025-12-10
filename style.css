@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+/* Touch Device Detection */
+html.touch-device {
+    /* Disable hover-based media queries for touch devices */
+    --hover-enabled: 0;
+}
+
+/* Active touch feedback styles */
+html.touch-device a.active-touch,
+html.touch-device button.active-touch,
+html.touch-device .skill-category.active-touch,
+html.touch-device .testimonial-card.active-touch,
+html.touch-device .about-card.active-touch {
+    opacity: 0.85;
+    transform: scale(0.98);
+    transition: all 0.15s ease;
+}
+
 /* Base Styles */
 body {
     scroll-behavior: smooth;
