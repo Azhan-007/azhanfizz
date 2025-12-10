@@ -547,7 +547,7 @@ body.light-mode #about .about-card:hover {
     align-items: center;
     justify-content: center;
     --hue: 220deg;
-    --width: 3.5rem;
+    --width: 2.8rem;
     --accent-hue: 22deg;
     --duration: 0.3s;
     --easing: cubic-bezier(0.4, 0, 0.2, 1);
