@@ -1,0 +1,748 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* Base Styles */
+body {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Timeline Styles */
+.right-timeline {
+    animation: slideInRight 1s forwards;
+}
+
+.left-timeline {
+    animation: slideInLeft 1s forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .right-timeline, .left-timeline {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+/* Gradient Text */
+.gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* Hover Effects */
+.hover-grow {
+    transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.03);
+}
+
+/* Section Dividers */
+.curved-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.curved-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+}
+
+.curved-divider .shape-fill {
+    fill: #0F172A;
+}
+
+/* Input Focus Effects */
+.input-focus:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Back to Top Button Visibility */
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cont {
+    font-size: 1.2rem;
+}
+
+.cont_main {
+    margin-bottom: 50px;
+}
+
+.follow_me {
+    margin-bottom: 50px;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+}
+
+/* Light mode - Background blobs */
+body.light-mode .absolute.rounded-full:not(#experience .absolute) {
+    opacity: 0.15 !important;
+}
+
+/* Keep timeline icons fully visible and colored in light mode */
+body.light-mode #experience .from-blue-500.to-cyan-500.w-12.h-12 {
+    opacity: 1 !important;
+    background: linear-gradient(to bottom right, #3b82f6, #06b6d4) !important;
+}
+
+body.light-mode #experience .from-purple-500.to-pink-500.w-12.h-12 {
+    opacity: 1 !important;
+    background: linear-gradient(to bottom right, #a855f7, #ec4899) !important;
+}
+
+body.light-mode #experience .from-cyan-500.to-blue-500.w-12.h-12 {
+    opacity: 1 !important;
+    background: linear-gradient(to bottom right, #06b6d4, #3b82f6) !important;
+}
+
+/* Light mode - Cards and sections */
+body.light-mode section {
+    color: #1f2937 !important;
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6,
+body.light-mode p,
+body.light-mode span,
+body.light-mode div {
+    color: inherit !important;
+}
+
+/* Light mode - Glass cards */
+body.light-mode .glass-card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light mode - All dark cards with gradients */
+body.light-mode [class*="from-gray-800"],
+body.light-mode [class*="from-gray-900"],
+body.light-mode [class*="to-gray-800"],
+body.light-mode [class*="to-gray-900"],
+body.light-mode .bg-gray-800,
+body.light-mode .bg-gray-900 {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fef3c7 100%) !important;
+    border: 1px solid #bae6fd !important;
+}
+
+/* Light mode - Text inside dark cards */
+body.light-mode [class*="from-gray-800"] *:not([class*="bg-clip-text"]):not([class*="gradient"]),
+body.light-mode [class*="from-gray-900"] *:not([class*="bg-clip-text"]):not([class*="gradient"]),
+body.light-mode [class*="to-gray-800"] *:not([class*="bg-clip-text"]):not([class*="gradient"]),
+body.light-mode [class*="to-gray-900"] *:not([class*="bg-clip-text"]):not([class*="gradient"]),
+body.light-mode .bg-gray-800 *:not([class*="bg-clip-text"]):not([class*="gradient"]),
+body.light-mode .bg-gray-900 *:not([class*="bg-clip-text"]):not([class*="gradient"]) {
+    color: #1f2937 !important;
+}
+
+/* Light mode - Testimonial specific cards */
+body.light-mode #contact .rounded-2xl.p-8 {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+/* Light mode - Testimonial cards with gradients */
+body.light-mode #testimonials .rounded-2xl {
+    background: linear-gradient(135deg, #fce7f3 0%, #e0e7ff 50%, #dbeafe 100%) !important;
+    border: 1px solid #e0e7ff !important;
+}
+
+/* Light mode - Scrollbar */
+body.light-mode ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+}
+
+/* Light mode - Input fields */
+body.light-mode input,
+body.light-mode textarea {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #1f2937 !important;
+}
+
+/* Light mode - Footer */
+body.light-mode footer {
+    background-color: #f8fafc !important;
+    border-top: 1px solid #e2e8f0 !important;
+}
+
+/* Preserve gradient text in light mode */
+body.light-mode .gradient-text,
+body.light-mode [class*="bg-clip-text"] {
+    color: transparent !important;
+}
+
+/* Social media icon buttons - preserve hover colors in both modes */
+.follow_me a {
+    color: #9ca3af;
+}
+
+.follow_me a:hover {
+    transform: scale(1.1);
+}
+
+.follow_me a:active {
+    transform: scale(0.95);
+}
+
+body.light-mode .follow_me a {
+    background-color: #f3f4f6 !important;
+    color: #4b5563 !important;
+}
+
+body.light-mode .follow_me a:nth-child(1):hover {
+    background-color: rgba(34, 197, 94, 0.3) !important;
+    color: #16a34a !important;
+}
+
+body.light-mode .follow_me a:nth-child(2):hover {
+    background-color: rgba(59, 130, 246, 0.3) !important;
+    color: #2563eb !important;
+}
+
+body.light-mode .follow_me a:nth-child(3):hover {
+    background-color: rgba(37, 99, 235, 0.3) !important;
+    color: #1d4ed8 !important;
+}
+
+body.light-mode .follow_me a:nth-child(4):hover {
+    background-color: rgba(168, 85, 247, 0.3) !important;
+    color: #9333ea !important;
+}
+
+/* Light mode - My Journey hover effects */
+body.light-mode #experience .rounded-xl:hover {
+    transform: translateY(-0.5rem) scale(1.05) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode #experience .rounded-xl:hover[class*="border-blue"] {
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2), 0 8px 10px -6px rgba(59, 130, 246, 0.2) !important;
+}
+
+body.light-mode #experience .rounded-xl:hover[class*="border-purple"] {
+    border-color: rgba(168, 85, 247, 0.5) !important;
+    box-shadow: 0 20px 25px -5px rgba(168, 85, 247, 0.2), 0 8px 10px -6px rgba(168, 85, 247, 0.2) !important;
+}
+
+body.light-mode #experience .rounded-xl:hover[class*="border-cyan"] {
+    border-color: rgba(6, 182, 212, 0.5) !important;
+    box-shadow: 0 20px 25px -5px rgba(6, 182, 212, 0.2), 0 8px 10px -6px rgba(6, 182, 212, 0.2) !important;
+}
+
+/* Light mode - Hide/reduce My Journey background gradient */
+body.light-mode #experience .absolute.bg-gradient-to-l {
+    opacity: 0 !important;
+}
+
+
+
+/* Light mode - Project cards hover overlay */
+body.light-mode #projects .group:hover .absolute.bg-gradient-to-t {
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)) !important;
+}
+
+body.light-mode #projects .group:hover .absolute.bg-gradient-to-t h3 {
+    color: #1f2937 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #projects img {
+    opacity: 1 !important;
+}
+
+/* Smooth transitions for project cards */
+#projects .group,
+#projects .group *,
+#projects .group img {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+#projects .group {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease;
+}
+
+#projects .group img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#projects .group .absolute.bg-gradient-to-t {
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* Light mode - make project card hover more lively but clean */
+body.light-mode #projects .group:hover {
+    box-shadow: 0 12px 18px -8px rgba(0,0,0,0.12), 0 6px 10px -6px rgba(102, 126, 234, 0.15);
+}
+
+/* Light mode - subtle overlay on hover for better text contrast */
+/* Light mode - replace white overlay with glass effect */
+body.light-mode #projects .group:hover .absolute.bg-gradient-to-t {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(209, 213, 219, 0.35);
+}
+
+/* Light mode - keep title readable in overlay */
+body.light-mode #projects .group:hover .absolute.bg-gradient-to-t h3 {
+    color: #0f172a !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+
+
+/* Light mode - Hide About section background gradients */
+body.light-mode #about .absolute.bg-gradient-to-l {
+    opacity: 0 !important;
+}
+
+/* Light mode - Contact Me button (hero section) */
+body.light-mode .flex.space-x-4 a[href="#contact"] {
+    border: 2px solid #cbd5e1 !important;
+    background-color: #f8fafc !important;
+    color: #1f2937 !important;
+    transition: all 0.3s ease !important;
+}
+
+body.light-mode .flex.space-x-4 a[href="#contact"]:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border-color: #667eea !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.4), 0 4px 6px -2px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* Unified theme toggle styling (circle + track) */
+.theme-toggle {
+    background: linear-gradient(to right, #4f46e5, #7c3aed);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle .toggle-circle {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25), 0 0 8px rgba(255,255,255,1), 0 0 18px rgba(124,58,237,0.65), 0 4px 8px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease;
+}
+
+body.light-mode .theme-toggle {
+    background: linear-gradient(to right, #6366f1, #8b5cf6); /* Slightly lighter to keep white circle distinct */
+}
+
+body.light-mode .theme-toggle .toggle-circle {
+    background: #ffffff; /* remains white */
+}
+
+/* Light mode - Profile photo glow effect */
+body.light-mode #about .absolute.bg-gradient-to-r.from-purple-500.to-blue-500 {
+    opacity: 0.6 !important;
+}
+
+/* Welcome modal animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-40px) translateX(-10px);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-20px) translateX(5px);
+        opacity: 0.6;
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+}
+
+/* Light mode welcome modal */
+body.light-mode #welcomeModal {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+body.light-mode #welcomeContent {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #fef3c7 100%);
+    border-color: #e5e7eb;
+}
+
+body.light-mode #welcomeContent h2,
+body.light-mode #welcomeContent p {
+    color: #1f2937;
+}
+
+body.light-mode #welcomeContent .text-gray-300 {
+    color: #4b5563 !important;
+}
+
+body.light-mode #welcomeContent .text-gray-400 {
+    color: #6b7280 !important;
+}
+
+/* Testimonials stars - make solid, remove outline */
+#testimonials .feather-star {
+    fill: #facc15 !important; /* Tailwind yellow-400 */
+    stroke: #facc15 !important;
+    stroke-width: 0 !important;
+}
+
+body.light-mode #testimonials .feather-star {
+    fill: #f59e0b !important; /* slightly deeper for light bg (yellow-500) */
+    stroke: #f59e0b !important;
+    stroke-width: 0 !important;
+}
+
+/* About section premium hover effects */
+#about .about-card {
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    will-change: transform, box-shadow;
+    overflow: hidden;
+}
+
+#about .about-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 10px 20px -6px rgba(0,0,0,0.35);
+    background: linear-gradient(135deg, rgba(31,41,55,0.95), rgba(17,24,39,0.95));
+}
+
+#about .about-card .icon-wrap {
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+#about .about-card:hover .icon-wrap {
+    transform: translateY(-2px);
+}
+
+#about .about-card h4 {
+    transition: color 0.25s ease;
+}
+
+#about .about-card:hover h4 {
+    color: #e5e7eb;
+}
+
+/* Light mode adjustments for About card hover */
+body.light-mode #about .about-card:hover {
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+}
+
+/* UIverse.io Theme Toggle Button Styles */
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --hue: 220deg;
+    --width: 3.5rem;
+    --accent-hue: 22deg;
+    --duration: 0.3s;
+    --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.togglesw {
+    display: none;
+}
+
+.switch {
+    --shadow-offset: calc(var(--width) / 20);
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: var(--width);
+    height: calc(var(--width) / 2.5);
+    border-radius: var(--width);
+    box-shadow: inset 10px 10px 10px hsl(var(--hue) 20% 80%),
+        inset -10px -10px 10px hsl(var(--hue) 20% 93%);
+}
+
+.indicator {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 60%;
+    transition: all var(--duration) var(--easing);
+    box-shadow: inset 0 0 2px hsl(var(--hue) 20% 15% / 60%),
+        inset 0 0 3px 2px hsl(var(--hue) 20% 15% / 60%),
+        inset 0 0 5px 2px hsl(var(--hue) 20% 45% / 60%);
+}
+
+.indicator.left {
+    --hue: var(--accent-hue);
+    overflow: hidden;
+    left: 10%;
+    border-radius: 100px 0 0 100px;
+    background: linear-gradient(180deg, hsl(calc(var(--accent-hue) + 20deg) 95% 80%) 10%, hsl(calc(var(--accent-hue) + 20deg) 100% 60%) 30%, hsl(var(--accent-hue) 90% 50%) 60%, hsl(var(--accent-hue) 90% 60%) 75%, hsl(var(--accent-hue) 90% 50%));
+}
+
+.indicator.left::after {
+    content: '';
+    position: absolute;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+}
+
+.indicator.right {
+    right: 10%;
+    border-radius: 0 100px 100px 0;
+    background-image: linear-gradient(180deg, hsl(var(--hue) 20% 95%), hsl(var(--hue) 20% 65%) 60%, hsl(var(--hue) 20% 70%) 70%, hsl(var(--hue) 20% 65%));
+}
+
+.button {
+    position: absolute;
+    z-index: 1;
+    width: 55%;
+    height: 80%;
+    left: 5%;
+    border-radius: 100px;
+    background-image: linear-gradient(160deg, hsl(var(--hue) 20% 95%) 40%, hsl(var(--hue) 20% 65%) 70%);
+    transition: all var(--duration) var(--easing);
+    box-shadow: 1px 1px 2px hsl(var(--hue) 18% 50% / 60%),
+        1px 2px 4px hsl(var(--hue) 18% 50% / 30%);
+}
+
+.button::before, 
+.button::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    width: 41%;
+    height: 80%;
+    border-radius: 100%;
+}
+
+.button::before {
+    left: 5%;
+    box-shadow: inset 1px 1px 2px hsl(var(--hue) 20% 85%);
+    background-image: linear-gradient(-50deg, hsl(var(--hue) 20% 95%) 20%, hsl(var(--hue) 20% 85%) 80%);
+}
+
+.button::after {
+    right: 5%;
+    box-shadow: inset 1px 1px 3px hsl(var(--hue) 20% 70%);
+    background-image: linear-gradient(-50deg, hsl(var(--hue) 20% 95%) 20%, hsl(var(--hue) 20% 75%) 80%);
+}
+
+.togglesw:checked + .switch .button {
+    left: 40%;
+}
+
+.togglesw:not(:checked) + .switch .indicator.left,
+.togglesw:checked + .switch .indicator.right {
+    box-shadow: inset 0 0 5px hsl(var(--hue) 20% 15% / 100%),
+        inset 20px 20px 10px hsl(var(--hue) 20% 15% / 100%),
+        inset 20px 20px 15px hsl(var(--hue) 20% 45% / 100%);
+}
+
+/* Tooltip Styles */
+.theme-toggle-container {
+    position: relative;
+}
+
+.theme-toggle-container::after {
+    content: attr(data-tooltip);
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    transform: translateX(10px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 1;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+    z-index: 1000;
+    animation: slideInTooltip 8s ease 0.5s forwards;
+}
+
+.theme-toggle-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -8px;
+    transform: translateY(-50%);
+    border: 8px solid transparent;
+    border-right-color: #667eea;
+    opacity: 1;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 999;
+    animation: arrowSlide 8s ease 0.5s forwards;
+}
+
+@keyframes arrowSlide {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInTooltip {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
+.theme-toggle-container.hide-tooltip::after,
+.theme-toggle-container.hide-tooltip::before {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+body.light-mode .theme-toggle-container::after {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+body.light-mode .theme-toggle-container::before {
+    border-right-color: #667eea;
+}
+
+/* Hide tooltip on mobile */
+@media (max-width: 768px) {
+    .theme-toggle-container::after,
+    .theme-toggle-container::before {
+        display: none;
+    }
+}
+

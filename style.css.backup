@@ -1,0 +1,654 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* Base Styles */
+body {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Timeline Styles */
+.right-timeline {
+    animation: slideInRight 1s forwards;
+}
+
+.left-timeline {
+    animation: slideInLeft 1s forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .right-timeline, .left-timeline {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+/* Gradient Text */
+.gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* Hover Effects */
+.hover-grow {
+    transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.03);
+}
+
+/* Section Dividers */
+.curved-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.curved-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+}
+
+.curved-divider .shape-fill {
+    fill: #0F172A;
+}
+
+/* Input Focus Effects */
+.input-focus:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Back to Top Button Visibility */
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cont {
+    font-size: 1.2rem;
+}
+
+.cont_main {
+    margin-bottom: 50px;
+}
+
+.follow_me {
+    margin-bottom: 50px;
+}
+
+/* ==================== LIGHT MODE STYLES ==================== */
+body.light-mode {
+    background: #ffffff !important;
+    color: #1f2937 !important;
+}
+
+/* Background blobs */
+body.light-mode .absolute.rounded-full {
+    opacity: 0.15 !important;
+}
+
+/* Text colors */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode p {
+    color: #1f2937 !important;
+}
+
+/* Icon colors */
+body.light-mode .text-purple-400 {
+    color: #a78bfa !important;
+}
+
+body.light-mode .text-blue-400 {
+    color: #60a5fa !important;
+}
+
+body.light-mode .text-pink-400,
+body.light-mode .text-pink-500 {
+    color: #f472b6 !important;
+}
+
+body.light-mode .text-cyan-400 {
+    color: #22d3ee !important;
+}
+
+body.light-mode .text-yellow-400 {
+    color: #facc15 !important;
+}
+
+/* All dark gray cards get purple gradient */
+body.light-mode [class*="from-gray-800"],
+body.light-mode [class*="from-gray-900"],
+body.light-mode .bg-gray-800,
+body.light-mode .bg-gray-900 {
+    background: linear-gradient(135deg, #faf5ff, #ede9fe, #f3e8ff) !important;
+    border: 1px solid rgba(168, 85, 247, 0.2) !important;
+}
+
+/* Gradient buttons */
+body.light-mode a[class*="bg-gradient"],
+body.light-mode button[class*="bg-gradient"] {
+    background: linear-gradient(to right, #a855f7, #3b82f6) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode a[class*="bg-gradient"]:hover {
+    background: linear-gradient(to right, #9333ea, #2563eb) !important;
+}
+
+/* Border buttons */
+body.light-mode a[class*="border-2"] {
+    border-color: rgba(139, 92, 246, 0.5) !important;
+    background-color: rgba(168, 85, 247, 0.1) !important;
+    color: #7c3aed !important;
+}
+
+body.light-mode a[class*="border-2"]:hover {
+    border-color: rgba(139, 92, 246, 0.8) !important;
+    background-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+/* Logo gradient */
+body.light-mode nav [class*="bg-clip-text"] {
+    background: linear-gradient(to right, #7c3aed, #3b82f6) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Hero title gradient */
+body.light-mode section [class*="bg-clip-text"] {
+    background: linear-gradient(to right, #7c3aed, #ec4899, #3b82f6) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Testimonials - pink gradient */
+body.light-mode #testimonials .rounded-2xl {
+    background: linear-gradient(135deg, #fce7f3, #fbcfe8, #fce7f3) !important;
+    border: 1px solid rgba(236, 72, 153, 0.2) !important;
+}
+
+/* Journey/Experience - blue gradient */
+body.light-mode #experience .rounded-xl {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe, #dbeafe) !important;
+    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Journey timeline icons */
+body.light-mode #experience .rounded-full {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4) !important;
+}
+
+body.light-mode #experience .rounded-full[class*="from-purple"] {
+    background: linear-gradient(135deg, #a855f7, #ec4899) !important;
+}
+
+body.light-mode #experience .rounded-full i,
+body.light-mode #experience .rounded-full svg {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+/* Contact cards - sky blue gradient */
+body.light-mode #contact .rounded-2xl {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #f0f9ff) !important;
+    border: 1px solid rgba(14, 165, 233, 0.2) !important;
+}
+
+body.light-mode #contact .bg-gradient-to-br.from-gray-900 {
+    background: linear-gradient(135deg, #e0f2fe, #dbeafe, #e0f2fe) !important;
+}
+
+/* Input fields */
+body.light-mode input,
+body.light-mode textarea {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #1f2937 !important;
+}
+
+/* Footer */
+body.light-mode footer {
+    background-color: #f8fafc !important;
+    border-top: 1px solid #e2e8f0 !important;
+}
+
+/* Light mode - Testimonial specific cards */
+body.light-mode #testimonials .rounded-2xl {
+    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #fce7f3 100%) !important;
+    border: 1px solid rgba(236, 72, 153, 0.3) !important;
+}
+
+body.light-mode #testimonials h4,
+body.light-mode #testimonials p {
+    color: #1f2937 !important;
+}
+
+body.light-mode #experience .rounded-xl {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #dbeafe 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+}
+
+body.light-mode #contact .rounded-2xl {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%) !important;
+    border: 1px solid rgba(14, 165, 233, 0.2) !important;
+}
+
+/* Light mode - Scrollbar */
+body.light-mode ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+}
+
+/* Light mode - Input fields */
+body.light-mode input,
+body.light-mode textarea {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #1f2937 !important;
+}
+
+/* Light mode - Footer */
+body.light-mode footer {
+    background-color: #f8fafc !important;
+    border-top: 1px solid #e2e8f0 !important;
+}
+
+/* Preserve gradient text in light mode */
+body.light-mode .gradient-text {
+    color: transparent !important;
+}
+
+/* Logo fix for light mode */
+body.light-mode nav a[class*="bg-clip-text"] {
+    background: linear-gradient(to right, #7c3aed, #3b82f6) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* Hero and section title gradients in light mode */
+body.light-mode section [class*="bg-clip-text"] {
+    background: linear-gradient(to right, #7c3aed, #ec4899, #3b82f6) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* Social media icon buttons - preserve hover colors in both modes */
+.follow_me a {
+    color: #9ca3af;
+}
+
+.follow_me a:hover {
+    transform: scale(1.1);
+}
+
+.follow_me a:active {
+    transform: scale(0.95);
+}
+
+body.light-mode .follow_me a {
+    background-color: #f3f4f6 !important;
+    color: #4b5563 !important;
+}
+
+body.light-mode .follow_me a:nth-child(1):hover {
+    background-color: rgba(34, 197, 94, 0.3) !important;
+    color: #16a34a !important;
+}
+
+body.light-mode .follow_me a:nth-child(2):hover {
+    background-color: rgba(59, 130, 246, 0.3) !important;
+    color: #2563eb !important;
+}
+
+body.light-mode .follow_me a:nth-child(3):hover {
+    background-color: rgba(37, 99, 235, 0.3) !important;
+    color: #1d4ed8 !important;
+}
+
+body.light-mode .follow_me a:nth-child(4):hover {
+    background-color: rgba(168, 85, 247, 0.3) !important;
+    color: #9333ea !important;
+}
+
+/* Welcome Modal Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes gradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+}
+
+/* Welcome Modal Light Mode */
+body.light-mode #welcomeModal {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.light-mode #welcomeContent {
+    background: linear-gradient(135deg, #ffffff, #f3f4f6, #ffffff) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode #welcomeContent h2 {
+    background: linear-gradient(to right, #7c3aed, #ec4899, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light-mode #welcomeContent p {
+    color: #4b5563 !important;
+}
+
+body.light-mode #welcomeContent .text-gray-300 {
+    color: #1f2937 !important;
+}
+
+body.light-mode #welcomeContent .text-gray-400 {
+    color: #6b7280 !important;
+}
+
+/* About Card Hover Effects (simplified) */
+.about-card {
+    transition: all 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.15);
+}
+
+.about-card:hover .icon-wrap {
+    transform: scale(1.1);
+}
+
+.icon-wrap {
+    transition: transform 0.3s ease;
+}
+
+body.light-mode .about-card {
+    background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 50%, #f3e8ff 100%) !important;
+    border-color: rgba(168, 85, 247, 0.3) !important;
+}
+
+body.light-mode .about-card:hover {
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #f3e8ff 100%) !important;
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.25) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+}
+
+body.light-mode .about-card h4,
+body.light-mode .about-card p {
+    color: #1f2937 !important;
+}
+
+body.light-mode .about-card .opacity-80 {
+    opacity: 1 !important;
+    color: #4b5563 !important;
+}
+
+body.light-mode .about-card .icon-wrap i {
+    color: #a855f7 !important;
+}
+
+/* Light mode - All gray cards get purple gradient */
+body.light-mode [class*="from-gray-800"],
+body.light-mode .bg-gradient-to-br.from-gray-800 {
+    background: linear-gradient(135deg, #faf5ff, #ede9fe, #f3e8ff) !important;
+    border-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+/* Testimonials Stars Fix */
+#testimonials .feather-star {
+    fill: #facc15 !important;
+    stroke: none !important;
+}
+
+body.light-mode #testimonials .feather-star {
+    fill: #eab308 !important;
+    stroke: none !important;
+}
+
+/* Project Cards Light Mode */
+body.light-mode #projects .group {
+    background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 50%, #f3e8ff 100%) !important;
+    border-color: rgba(168, 85, 247, 0.3) !important;
+}
+
+body.light-mode #projects .group:hover {
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+}
+
+body.light-mode #projects .group .absolute {
+    background: linear-gradient(to top, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        rgba(255, 255, 255, 0.2) 100%) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+body.light-mode #projects .group h3 {
+    color: #1f2937 !important;
+}
+
+body.light-mode #projects .group p {
+    color: #4b5563 !important;
+}
+
+body.light-mode #projects .feather {
+    color: #a855f7 !important;
+}
+
+/* Light mode - Hero section profile card */
+body.light-mode .lg\:w-1\/2 .bg-gradient-to-br {
+    background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 50%, #f3e8ff 100%) !important;
+}
+
+/* Light mode - Testimonials cards with pink gradient */
+body.light-mode #testimonials .rounded-2xl {
+    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #fce7f3 100%) !important;
+    border: 1px solid rgba(236, 72, 153, 0.3) !important;
+}
+
+body.light-mode #testimonials .rounded-2xl h4,
+body.light-mode #testimonials .rounded-2xl p {
+    color: #1f2937 !important;
+}
+
+body.light-mode #testimonials .rounded-2xl .opacity-80 {
+    opacity: 1 !important;
+    color: #4b5563 !important;
+}
+
+body.light-mode #testimonials .rounded-2xl .opacity-90 {
+    opacity: 1 !important;
+    color: #374151 !important;
+}
+
+/* Light mode - Experience/Journey timeline cards with blue gradient */
+body.light-mode #experience .rounded-xl {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #dbeafe 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+body.light-mode #experience .rounded-xl h3,
+body.light-mode #experience .rounded-xl p {
+    color: #1f2937 !important;
+}
+
+/* Light mode - Journey timeline icons FULLY VISIBLE */
+body.light-mode #experience .rounded-full {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4) !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5) !important;
+}
+
+body.light-mode #experience .rounded-full[class*="from-blue"] {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4) !important;
+}
+
+body.light-mode #experience .rounded-full[class*="from-purple"] {
+    background: linear-gradient(135deg, #a855f7, #ec4899) !important;
+}
+
+body.light-mode #experience .rounded-full[class*="from-cyan"] {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6) !important;
+}
+
+body.light-mode #experience .rounded-full i,
+body.light-mode #experience .rounded-full svg,
+body.light-mode #experience .rounded-full .feather {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    fill: none !important;
+}
+
+body.light-mode #experience .text-blue-300,
+body.light-mode #experience .text-purple-300,
+body.light-mode #experience .text-cyan-300 {
+    color: #1e40af !important;
+}
+
+body.light-mode #experience h3,
+body.light-mode #experience p {
+    color: #1f2937 !important;
+}
+
+/* Light mode - Contact section cards with sky blue gradient */
+body.light-mode #contact .rounded-2xl {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%) !important;
+    border: 1px solid rgba(14, 165, 233, 0.2) !important;
+}
+
+/* Light mode - Contact info panel specific */
+body.light-mode #contact .bg-gradient-to-br.from-gray-900 {
+    background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #e0f2fe 100%) !important;
+}
+
+/* Light mode - ALL gradient buttons */
+body.light-mode a[class*="bg-gradient"],
+body.light-mode button[class*="bg-gradient"] {
+    background: linear-gradient(to right, #a855f7, #3b82f6) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3) !important;
+}
+
+body.light-mode a[class*="bg-gradient"]:hover,
+body.light-mode button[class*="bg-gradient"]:hover {
+    background: linear-gradient(to right, #9333ea, #2563eb) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Light mode - Contact Me border button */
+body.light-mode a[class*="border-2"] {
+    border-color: #8b5cf6 !important;
+    background: rgba(168, 85, 247, 0.15) !important;
+    color: #7c3aed !important;
+    font-weight: 600 !important;
+}
+
+body.light-mode a[class*="border-2"]:hover {
+    border-color: #7c3aed !important;
+    background: rgba(168, 85, 247, 0.25) !important;
+    color: #6d28d9 !important;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3) !important;
+}
+
