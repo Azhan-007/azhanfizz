@@ -37,14 +37,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 150);
 
-    // Staggered reveal for cards on page load (avoid touching .group to keep hover effects intact)
-    const cards = document.querySelectorAll('.skill-category, .about-card, .testimonial-card, .project-card, .experience-card');
-    cards.forEach((card, index) => {
-        card.classList.add('reveal-card');
+    // Reveal cards on enter using IntersectionObserver (keeps hover effects intact)
+    const cards = document.querySelectorAll('.skill-category, .about-card, .testimonial-card, .project-card, .experience-card, .group');
+    cards.forEach(card => card.classList.add('reveal-card'));
+
+    const reveal = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(reveal, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -10% 0px'
+        });
+        cards.forEach(card => observer.observe(card));
+    } else {
+        // Fallback: reveal all after a short delay
         setTimeout(() => {
-            card.classList.add('revealed');
-        }, 120 * index + 150);
-    });
+            cards.forEach(card => card.classList.add('revealed'));
+        }, 200);
+    }
     
     // Close modal
     closeWelcome.addEventListener('click', () => {
