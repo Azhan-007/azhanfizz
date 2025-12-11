@@ -9,14 +9,22 @@ if (isTouchDevice()) {
     document.documentElement.classList.add('touch-device');
     
     // Add active state feedback for interactive elements on touch
-    const interactiveElements = document.querySelectorAll('a, button, .skill-category, .testimonial-card, .about-card');
+    const interactiveElements = document.querySelectorAll('a, button, .skill-category, .testimonial-card, .about-card, .project-card');
     interactiveElements.forEach(el => {
-        el.addEventListener('touchstart', function() {
+        el.addEventListener('touchstart', function(e) {
             this.classList.add('active-touch');
-        });
-        el.addEventListener('touchend', function() {
-            setTimeout(() => this.classList.remove('active-touch'), 200);
-        });
+            // Prevent default to avoid double-tap zoom interference
+            e.preventDefault = () => {};
+        }, { passive: true });
+        
+        el.addEventListener('touchend', function(e) {
+            this.classList.remove('active-touch');
+        }, { passive: true });
+        
+        // Fallback for touch cancel
+        el.addEventListener('touchcancel', function() {
+            this.classList.remove('active-touch');
+        }, { passive: true });
     });
 }
 
