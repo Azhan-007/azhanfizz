@@ -36,6 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
             feather.replace();
         }
     }, 150);
+
+    // Staggered reveal for cards on page load
+    const cards = document.querySelectorAll('.skill-category, .about-card, .testimonial-card, .group, .project-card');
+    cards.forEach((card, index) => {
+        card.classList.add('reveal-card');
+        setTimeout(() => {
+            card.classList.add('revealed');
+        }, 120 * index + 150);
+    });
     
     // Close modal
     closeWelcome.addEventListener('click', () => {
