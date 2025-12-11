@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const welcomeContent = document.getElementById('welcomeContent');
     const closeWelcome = document.getElementById('closeWelcome');
     
-    // Show welcome modal on first visit
+    // Show welcome modal quickly on first visit
     setTimeout(() => {
         welcomeModal.classList.remove('opacity-0', 'invisible');
         welcomeContent.classList.remove('scale-95');
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof feather !== 'undefined') {
             feather.replace();
         }
-    }, 500);
+    }, 150);
     
     // Close modal
     closeWelcome.addEventListener('click', () => {
