@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 150);
 
-    // Staggered reveal for cards on page load
-    const cards = document.querySelectorAll('.skill-category, .about-card, .testimonial-card, .group, .project-card');
+    // Staggered reveal for cards on page load (avoid touching .group to keep hover effects intact)
+    const cards = document.querySelectorAll('.skill-category, .about-card, .testimonial-card, .project-card, .experience-card');
     cards.forEach((card, index) => {
         card.classList.add('reveal-card');
         setTimeout(() => {
