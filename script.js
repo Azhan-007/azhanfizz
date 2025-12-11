@@ -50,32 +50,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(reveal, {
+    let revealObserver = null;
+    const setupObserver = () => {
+        if (!('IntersectionObserver' in window)) return;
+        revealObserver = new IntersectionObserver(reveal, {
             threshold: 0.15,
             rootMargin: '0px 0px -10% 0px'
         });
-        cards.forEach(card => observer.observe(card));
+        cards.forEach(card => revealObserver.observe(card));
+    };
+
+    const revealVisibleNow = () => {
+        if (!cards.length) return;
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
+                card.classList.add('revealed');
+                if (revealObserver) revealObserver.unobserve(card);
+            }
+        });
+    };
+
+    if ('IntersectionObserver' in window) {
+        setupObserver();
     } else {
-        // Fallback: reveal all after a short delay
-        setTimeout(() => {
-            cards.forEach(card => card.classList.add('revealed'));
-        }, 200);
+        setTimeout(() => cards.forEach(card => card.classList.add('revealed')), 200);
     }
     
     // Close modal
-    closeWelcome.addEventListener('click', () => {
+    const hideWelcome = () => {
         welcomeContent.classList.add('scale-95');
         welcomeContent.classList.remove('scale-100');
         welcomeModal.classList.add('opacity-0', 'invisible');
-    });
+        setTimeout(revealVisibleNow, 200);
+    };
+
+    closeWelcome.addEventListener('click', hideWelcome);
     
     // Close on outside click
     welcomeModal.addEventListener('click', (e) => {
         if (e.target === welcomeModal) {
-            welcomeContent.classList.add('scale-95');
-            welcomeContent.classList.remove('scale-100');
-            welcomeModal.classList.add('opacity-0', 'invisible');
+            hideWelcome();
         }
     });
     
